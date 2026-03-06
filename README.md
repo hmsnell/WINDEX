@@ -3,9 +3,20 @@
 ## Getting started
 To use WINDEX, please set up the following environment based on the `requirements.txt` file in this repository: 
 
-`python3 -m venv ~/.venv/windex_env` 
-`source ~/.venv/windex_env/bin/activate`
-`pip install -r requirements.txt`
+Make a new python environment called `windex_env`:  
+```sh
+python3 -m venv ~/.venv/windex_env
+```  
+
+Activate said environment:  
+```sh
+source ~/.venv/windex_env/bin/activate
+```  
+
+Install all needed dependencies with the `requirements.txt` file:  
+```sh
+pip install -r requirements.txt
+```  
 
 ## Input data
 
