@@ -49,17 +49,34 @@ WINDEX also requires a set of trained Gaussian mixture models that represent the
 WINDEX can be called using this python command:
 
 ```sh
-python hierarchical_hmm.py path_to_trained_sites path_to_trained_windows site_file_output_name window_file_output_name site_statistics_file window_statistics_file window_size
+python hierarchical_hmm.py \ 
+  --path2trained_sites {path to site-level emissions} \
+  --path2trained_windows {path to window-level emissions} \
+  --window_size {size of window that window stats were calculated} \
+  --sites_out {site-level classification output name} \
+  --windows_out {window-level classification output name} \
+  --datafile_sites {name of site statistics file} \
+  --datafile_windows {name of window statistics file} \
+  --baum_welch_training {OPTIONAL} \
+  --baum_welch_matrix {OPTIONAL, matrix name} \
+  --posterior {OPTIONAL] \
+  --posterior_probs {OPTIONAL}
+
 ```
 
 Arguments: 
-- `path_to_trained_sites`: path to dir where the trained emissions are for your site statistics
-- `path_to_trained_windows`: path to dir where the trained emissions are for your window statistics
-- `site_file_output`: name of desired output for site-level observations
-- `window_file_output`: name of desired output for window-level observations
-- `site_statistics`: path to site statistic file for the simulation/genome in question
-- `window_statistics`: path to window statistic file for the simulation/genome in question
+- `path2trained_sites`: path to dir where the trained emissions are for your site statistics
+- `path2trained_windows`: path to dir where the trained emissions are for your window statistics
 - `window_size`: window size used to calculate window-based statistics
+- `sites_out`: name of desired output for site-level observations
+- `windows_out`: name of desired output for window-level observations
+- `datafile_sites`: path to site statistic file for the simulation/genome in question
+- `datafile_windows`: path to window statistic file for the simulation/genome in question
+- `baum_welch_training`: train window-level transitions based on training data input
+- `baum_welch_matrix`: input previously trained window-level matrix, or other window-level matrix
+- `posterior`: decode using hierarchical posterior decoding instead of hierarchical Viterbi
+- `posterior_probs`: invoke with the `--posterior` flag; calculates posterior probabilities for all class instead of just sweep class
+
 
 Please see FAQ page for any warnings/errors that arise during WINDEX testing.
 
